@@ -13,7 +13,7 @@ services:
       SYMFONY__MAILER_PASSWORD: ${mailer_secret_key}
       SYMFONY__AWS_S3_BUCKET: ${account_identifier}-warehouseplus
       SYMFONY__AWS_S3_REGION: eu-central-1
-      SYMFONY__AWS_ACCESS_KEY: $(bucket_access_key}
+      SYMFONY__AWS_ACCESS_KEY: ${bucket_access_key}
       SYMFONY__AWS_SECRET_KEY: ${bucket_secret_key}
       SYMFONY__HOST_ADMIN_PANEL: https://${account_identifier}.warehouseplus.de
       SYMFONY__VERSION_TAG: 1.2.9
