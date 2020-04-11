@@ -1,0 +1,69 @@
+.catalog:
+  name: "Customer"
+  version: "1.0.7"
+  description: "Customer Stack with API and Portal"
+  uuid: customer-1.0.7
+  minimum_rancher_version: v0.56.0
+  questions:
+    - variable: account_identifier
+      description: "Identifier of the customer account"
+      label: "Account identifier"
+      type: "string"
+      required: true
+    - variable: database_password
+      description: "Password for the customer database"
+      label: "Database password"
+      type: "password"
+      required: true
+    - variable: mailer_access_key
+      description: "Access key of the mailer"
+      label: "Mailer access key"
+      type: "string"
+      required: true
+    - variable: mailer_secret_key
+      description: "Secret key for the mailer"
+      label: "Mailer secret key"
+      type: "string"
+      required: true
+    - variable: bucket_access_key
+      description: "Access key of the bucket"
+      label: "Bucket access key"
+      type: "string"
+      required: true
+    - variable: bucket_secret_key
+      description: "Secret key for the bucket"
+      label: "Bucket secret key"
+      type: "string"
+      required: true
+    - variable: storage_driver
+      label: "Volume Storage Driver (Optional)"
+      description: |
+        To use a stack scoped volume backed by a persistent storage service, enter the name
+        of an existing storage driver (see `Infrastructure -> Storage`).
+      required: false
+      default: "rancher-nfs"
+      type: "string"
+    - variable: storage_driver_options
+      label: "Storage Driver Options (Optional)"
+      description: |
+        Specify a single "driver_opts" key/value pair in the format "optionName: optionValue".
+        E.g. for the `rancher-ebs` driver you should specify the required 'size' option like this: "size: 1".
+      required: false
+      type: "string"
+
+
+php:
+  scale: 2
+  start_on_create: true
+api:
+  scale: 2
+  start_on_create: true
+portal:
+  scale: 2
+  start_on_create: true
+letsencrypt:
+  scale: 1
+  start_on_create: true
+mysql:
+  scale: 1
+  start_on_create: true
