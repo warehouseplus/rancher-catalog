@@ -1,10 +1,10 @@
 version: '2'
 services:
   php:
-    image: 575062673063.dkr.ecr.eu-central-1.amazonaws.com/warehouseplus/api:1.7.15
+    image: 575062673063.dkr.ecr.eu-central-1.amazonaws.com/warehouseplus/api:1.7.16
     environment:
       SYMFONY_ENV: prod
-      SYMFONY__VERSION_TAG: 1.7.15
+      SYMFONY__VERSION_TAG: 1.7.16
       SYMFONY__DATABASE_HOST: database
       SYMFONY__DATABASE_NAME: customer_${account_identifier}
       SYMFONY__DATABASE_USER: customer_${account_identifier}
