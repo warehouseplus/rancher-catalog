@@ -43,9 +43,9 @@ services:
       io.rancher.container.pull_image: always
       io.rancher.sidekicks: php
   portal:
-    image: 575062673063.dkr.ecr.eu-central-1.amazonaws.com/warehouseplus/admin:1.5.22
+    image: 575062673063.dkr.ecr.eu-central-1.amazonaws.com/warehouseplus/admin:1.5.23
     environment:
-      REACT_APP_VERSION: 1.5.22
+      REACT_APP_VERSION: 1.5.23
       REACT_APP_API_CLIENT_ID: 1_15e7tdk08wao8gsw4g8ssoc04skc0o4c44gw04w4sk488888og
       REACT_APP_API_CLIENT_SECRET: 3yygqjselgg0s8ggok8ks0s4o8cg80oss4sskkc8sc0wksc04g
       REACT_APP_API_URL: https://api.${account_identifier}.warehouseplus.de
