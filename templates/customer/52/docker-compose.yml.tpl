@@ -1,10 +1,10 @@
 version: '2'
 services:
   php:
-    image: 575062673063.dkr.ecr.eu-central-1.amazonaws.com/warehouseplus/api:1.8.5
+    image: 575062673063.dkr.ecr.eu-central-1.amazonaws.com/warehouseplus/api:1.9.0
     environment:
       SYMFONY_ENV: prod
-      SYMFONY__VERSION_TAG: 1.8.5
+      SYMFONY__VERSION_TAG: 1.9.0
       SYMFONY__DATABASE_HOST: database
       SYMFONY__DATABASE_NAME: customer_${account_identifier}
       SYMFONY__DATABASE_USER: customer_${account_identifier}
@@ -43,9 +43,9 @@ services:
       io.rancher.container.pull_image: always
       io.rancher.sidekicks: php
   portal:
-    image: 575062673063.dkr.ecr.eu-central-1.amazonaws.com/warehouseplus/admin:1.6.4
+    image: 575062673063.dkr.ecr.eu-central-1.amazonaws.com/warehouseplus/admin:1.7.0
     environment:
-      REACT_APP_VERSION: 1.6.4
+      REACT_APP_VERSION: 1.7.0
       REACT_APP_API_CLIENT_ID: 1_15e7tdk08wao8gsw4g8ssoc04skc0o4c44gw04w4sk488888og
       REACT_APP_API_CLIENT_SECRET: 3yygqjselgg0s8ggok8ks0s4o8cg80oss4sskkc8sc0wksc04g
       REACT_APP_API_URL: https://api.${account_identifier}.warehouseplus.de
