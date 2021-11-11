@@ -49,7 +49,7 @@ services:
     image: vxcontrol/rancher-letsencrypt:v1.0.0
     environment:
       API_VERSION: Staging
-      CERT_NAME: invoiceninja5-${account_identifier}
+      CERT_NAME: invoiceninja5
       DNS_RESOLVERS: 8.8.8.8:53,8.8.4.4:53
       DOMAINS: ${APP_DOMAIN}
       EMAIL: webmaster@warehouseplus.de
