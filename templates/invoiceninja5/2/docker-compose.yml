@@ -1,0 +1,74 @@
+version: '2'
+
+services:
+  server:
+    image: michailkorenev/nginx-invoiceninja:0.0.1
+    restart: always
+    volumes:
+      - {{ .Stack.Name }}_in5_public:/var/www/app/public:ro
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+
+  app:
+    image: michailkorenev/invoiceninja:5.3.31
+    restart: always
+    environment:
+      # IN application vars
+      APP_URL: "http://${APP_DOMAIN}:80"
+      APP_KEY: "${APP_KEY}"
+      APP_DEBUG: "${APP_DEBUG}"
+      REQUIRE_HTTPS: "false"
+      PHANTOMJS_PDF_GENERATION: "false"
+      PDF_GENERATOR: "snappdf"
+      QUEUE_CONNECTION: "database"
+      # DB connection
+      DB_HOST: "${DB_HOST}"
+      DB_PORT: "${DB_PORT}"
+      DB_DATABASE: "${DB_DATABASE}"
+      DB_USERNAME: "${DB_USERNAME}"
+      DB_PASSWORD: "${DB_PASSWORD}"
+      # Create initial user
+      IN_USER_EMAIL: "${IN_USER_EMAIL}"
+      IN_PASSWORD: "${IN_PASSWORD}"
+      # Mail options
+      MAIL_MAILER: "smtp"
+      MAIL_HOST: "${MAIL_HOST}"
+      MAIL_PORT: "${MAIL_PORT}"
+      MAIL_USERNAME: "${MAIL_USERNAME}"
+      MAIL_PASSWORD: "${MAIL_PASSWORD}"
+      MAIL_ENCRYPTION: "${MAIL_ENCRYPTION}"
+      MAIL_FROM_ADDRESS: "${MAIL_FROM_ADDRESS}"
+      MAIL_FROM_NAME: "${MAIL_FROM_NAME}"
+    volumes:
+      - {{ .Stack.Name }}_in5_public:/var/www/app/public
+      - {{ .Stack.Name }}_in5_storage:/var/www/app/storage
+
+  letsencrypt:
+    image: vxcontrol/rancher-letsencrypt:v1.0.0
+    environment:
+      API_VERSION: Staging
+      CERT_NAME: invoiceninja5
+      DNS_RESOLVERS: 8.8.8.8:53,8.8.4.4:53
+      DOMAINS: ${APP_DOMAIN}
+      EMAIL: webmaster@warehouseplus.de
+      EULA: 'Yes'
+      PROVIDER: HTTP
+      PUBLIC_KEY_TYPE: RSA-2048
+      RENEWAL_PERIOD_DAYS: '30'
+      RENEWAL_TIME: '2'
+      RUN_ONCE: 'false'
+    volumes:
+    - /var/lib/rancher:/var/lib/rancher
+    labels:
+      io.rancher.container.agent.role: environment
+      io.rancher.container.create_agent: 'true'      
+
+volumes:
+  {{ .Stack.Name }}_in5_public:
+    external: true
+    driver: rancher-nfs  
+  {{ .Stack.Name }}_in5_storage:
+    external: true
+    driver: rancher-nfs        

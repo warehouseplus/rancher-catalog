@@ -1,0 +1,111 @@
+.catalog:
+  name: "Invoice Ninja 5" 
+  version: "0.0.3"
+  description: "Invoicing, Quotes, Expenses, Time-Tracking built with Laravel & Flutter"
+  uuid: invoiceninja5-0.0.3
+  minimum_rancher_version: v1.6.25
+  questions:
+    - variable: APP_DOMAIN
+      description: "Hostname of Invoice Ninja application"
+      label: "APP DOMAIN"
+      type: "string"
+      default: "invoice5.warehouseplus.de"
+      required: true
+    - variable: APP_KEY
+      description: "Please specify Invoice Ninja app key. You can get it by running the command: docker run --rm -it invoiceninja/invoiceninja php artisan key:generate --show"
+      label: "APP KEY"
+      type: "password"
+      required: true
+    - variable: APP_DEBUG
+      description: "Debug mode"
+      label: "APP DEBUG"
+      type: "string"
+      default: "false"
+      required: true
+    - variable: DB_HOST
+      description: "Mysql server host name"
+      label: "DB HOST"
+      type: "string"
+      default: "db"
+      required: true
+    - variable: DB_PORT
+      description: "Mysql server port"
+      label: "DB PORT"
+      type: "string"
+      default: "3306"
+      required: true
+    - variable: DB_DATABASE
+      description: "Mysql database name"
+      label: "DB DATABASE"
+      type: "string"
+      default: "ninja"
+      required: true      
+    - variable: DB_USERNAME
+      description: "Mysql database user name"
+      label: "DB USERNAME"
+      type: "string"
+      default: "ninja"
+      required: true      
+    - variable: DB_PASSWORD
+      description: "Mysql database password"
+      label: "DB PASSWORD"
+      type: "password"
+      required: true
+    - variable: IN_USER_EMAIL
+      description: "Invoice Ninja user email address. This value will be used during the first start of the container. If you will not specify it, the default value will be admin@example.com"
+      label: "IN USER EMAIL"
+      type: "string"
+      default: "admin@example.com"
+      required: false      
+    - variable: IN_PASSWORD
+      description: "Invoice Ninja user password. This value will be used during the first start of the container. If you will not specify it, the default value will be changeme!"
+      label: "IN PASSWORD"
+      type: "password"
+      required: false
+    - variable: MAIL_HOST
+      description: "SMTP server host name"
+      label: "MAIL HOST"
+      type: "string"
+      required: true   
+    - variable: MAIL_PORT
+      description: "SMTP server port. For SSL encryption default port is 465. For STARTTLS: 587"
+      label: "MAIL PORT"
+      type: "string"
+      default: "587"
+      required: true   
+    - variable: MAIL_USERNAME
+      description: "SMTP user name"
+      label: "MAIL USERNAME"
+      type: "string"
+      required: true   
+    - variable: MAIL_PASSWORD
+      description: "SMTP password"
+      label: "MAIL PASSWORD"
+      type: "password"
+      required: true   
+    - variable: MAIL_ENCRYPTION
+      description: "SMTP encryption. Could be ssl or tls"
+      label: "MAIL ENCRYPTION"
+      type: "string"
+      default: "tls"
+      required: true   
+    - variable: MAIL_FROM_ADDRESS
+      description: "Mail from address. Commonly it is mail box name"
+      label: "MAIL FROM ADDRESS"
+      type: "string"
+      required: true   
+    - variable: MAIL_FROM_NAME
+      description: "Mail from name"
+      label: "MAIL FROM NAME"
+      type: "string"
+      default: "Invoice Ninja"
+      required: true   
+
+server:
+  scale: 1
+  start_on_create: true
+app:
+  scale: 1
+  start_on_create: true
+
+
