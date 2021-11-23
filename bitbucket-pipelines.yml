@@ -1,8 +1,9 @@
 image: atlassian/default-image:3
 
 pipelines:
-    default:
-      - step:
-          script:
-            - git remote add github git@github.com:warehouseplus/rancher-catalog.git
-            - git push github master
+    branches:
+      master:
+        - step:
+            script:
+              - git remote add github git@github.com:warehouseplus/rancher-catalog.git
+              - git push github master
