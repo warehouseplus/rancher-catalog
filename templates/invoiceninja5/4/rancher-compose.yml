@@ -22,18 +22,6 @@
       type: "string"
       default: "false"
       required: true
-    - variable: DB_HOST
-      description: "Mysql server host name"
-      label: "DB HOST"
-      type: "string"
-      default: "db"
-      required: true
-    - variable: DB_PORT
-      description: "Mysql server port"
-      label: "DB PORT"
-      type: "string"
-      default: "3306"
-      required: true
     - variable: DB_DATABASE
       description: "Mysql database name"
       label: "DB DATABASE"
