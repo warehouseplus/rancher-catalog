@@ -19,7 +19,7 @@ services:
     restart: always
     environment:
       # IN application vars
-      APP_URL: "http://${APP_DOMAIN}:80"
+      APP_URL: "https://${APP_DOMAIN}:443"
       APP_KEY: "${APP_KEY}"
       APP_DEBUG: "${APP_DEBUG}"
       REQUIRE_HTTPS: "false"
