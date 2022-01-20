@@ -15,7 +15,7 @@ services:
       io.rancher.container.pull_image: always
 
   app:
-    image: michailkorenev/invoiceninja:5.3.41
+    image: michailkorenev/invoiceninja:5.3.48
     restart: always
     environment:
       # IN application vars
