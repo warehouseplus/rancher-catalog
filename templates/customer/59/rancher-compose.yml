@@ -1,8 +1,8 @@
 .catalog:
   name: "Customer"
-  version: "1.1.42"
+  version: "1.2.0"
   description: "Customer Stack with API and Portal"
-  uuid: customer-1.1.42
+  uuid: customer-1.2.0
   minimum_rancher_version: v0.56.0
   questions:
     - variable: account_identifier
@@ -62,5 +62,8 @@ portal:
   scale: 1
   start_on_create: true
 letsencrypt:
+  scale: 1
+  start_on_create: true
+elasticsearch:
   scale: 1
   start_on_create: true

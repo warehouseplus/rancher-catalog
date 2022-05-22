@@ -6,4 +6,4 @@ pipelines:
         - step:
             script:
               - git remote add github git@github.com:warehouseplus/rancher-catalog.git
-              - git push github master
+              - git push github master -f

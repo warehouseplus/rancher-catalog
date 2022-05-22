@@ -1,10 +1,14 @@
 version: '2'
+volumes:
+  customer_${account_identifier}_elasticsearch_data:
+    external: true
+    driver: rancher-nfs
 services:
   php:
-    image: 575062673063.dkr.ecr.eu-central-1.amazonaws.com/warehouseplus/api:1.11.3
+    image: 575062673063.dkr.ecr.eu-central-1.amazonaws.com/warehouseplus/api:1.12.1
     environment:
       SYMFONY_ENV: prod
-      SYMFONY__VERSION_TAG: 1.11.3
+      SYMFONY__VERSION_TAG: 1.12.1
       SYMFONY__DATABASE_HOST: database
       SYMFONY__DATABASE_NAME: customer_${account_identifier}
       SYMFONY__DATABASE_USER: customer_${account_identifier}
@@ -76,3 +80,11 @@ services:
     labels:
       io.rancher.container.agent.role: environment
       io.rancher.container.create_agent: 'true'
+  elasticsearch:
+    image: elasticsearch:6.8.15
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+      - TAKE_FILE_OWNERSHIP="true"
+    volumes:
+      - customer_${account_identifier}_elasticsearch_data:/usr/share/elasticsearch/data
