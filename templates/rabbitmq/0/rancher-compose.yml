@@ -1,0 +1,33 @@
+.catalog:
+  name: "RabbitMQ"
+  version: "3.10.0"
+  description: "Message Queue"
+  uuid: rabbitmq-3.10.0
+  minimum_rancher_version: v1.6.25
+  questions:
+    - variable: APP_DOMAIN
+      description: "Hostname of RabbitMQ application"
+      label: "APP DOMAIN"
+      type: "string"
+      default: "invoice5.warehouseplus.de"
+      required: true
+    - variable: DEFAULT_USER
+      description: "Default user name"
+      label: "DEFAULT USERNAME"
+      type: "string"
+      default: "admin"
+      required: true      
+    - variable: DEFAULT_PASS
+      description: "Default password"
+      label: "DEFAULT PASSWORD"
+      type: "password"
+      required: true
+
+rabbitmq:
+  scale: 1
+  start_on_create: true
+letsencrypt:
+  scale: 1
+  start_on_create: true
+
+

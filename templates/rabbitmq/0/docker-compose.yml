@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.10-management-alpine
+    restart: always
+    environment:
+      RABBITMQ_NODENAME: rabbit
+      RABBITMQ_DEFAULT_USER: ${DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${DEFAULT_PASS}
+    labels:
+      io.rancher.container.pull_image: always
+
+  letsencrypt:
+    image: vxcontrol/rancher-letsencrypt:v1.0.0
+    environment:
+      API_VERSION: Production
+      CERT_NAME: rabbitmq
+      DNS_RESOLVERS: 8.8.8.8:53,8.8.4.4:53
+      DOMAINS: ${APP_DOMAIN}
+      EMAIL: webmaster@warehouseplus.de
+      EULA: 'Yes'
+      PROVIDER: HTTP
+      PUBLIC_KEY_TYPE: RSA-2048
+      RENEWAL_PERIOD_DAYS: '30'
+      RENEWAL_TIME: '2'
+      RUN_ONCE: 'false'
+    volumes:
+    - /var/lib/rancher:/var/lib/rancher
+    labels:
+      io.rancher.container.agent.role: environment
+      io.rancher.container.create_agent: 'true'
