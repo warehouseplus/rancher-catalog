@@ -9,7 +9,7 @@
       description: "Hostname of RabbitMQ application"
       label: "APP DOMAIN"
       type: "string"
-      default: "invoice5.warehouseplus.de"
+      default: "rabbit.warehouseplus.de"
       required: true
     - variable: DEFAULT_USER
       description: "Default user name"
