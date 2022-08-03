@@ -5,10 +5,10 @@ volumes:
     driver: rancher-nfs
 services:
   php:
-    image: 575062673063.dkr.ecr.eu-central-1.amazonaws.com/warehouseplus/api:1.13.0
+    image: 575062673063.dkr.ecr.eu-central-1.amazonaws.com/warehouseplus/api:1.13.3
     environment:
       SYMFONY_ENV: prod
-      SYMFONY__VERSION_TAG: 1.13.0
+      SYMFONY__VERSION_TAG: 1.13.3
       SYMFONY__DATABASE_HOST: database
       SYMFONY__DATABASE_NAME: customer_${account_identifier}
       SYMFONY__DATABASE_USER: customer_${account_identifier}
@@ -38,11 +38,11 @@ services:
       io.rancher.container.pull_image: always
 {{ .Values.api_labels | indent 6 }}
   consumer:
-    image: 575062673063.dkr.ecr.eu-central-1.amazonaws.com/warehouseplus/api:1.13.0
+    image: 575062673063.dkr.ecr.eu-central-1.amazonaws.com/warehouseplus/api:1.13.3
     command: bin/console enqueue:consume --setup-broker -vvv
     environment:
       SYMFONY_ENV: prod
-      SYMFONY__VERSION_TAG: 1.13.0
+      SYMFONY__VERSION_TAG: 1.13.3
       SYMFONY__DATABASE_HOST: database
       SYMFONY__DATABASE_NAME: customer_${account_identifier}
       SYMFONY__DATABASE_USER: customer_${account_identifier}
