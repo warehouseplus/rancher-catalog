@@ -31,8 +31,6 @@ services:
     external_links:
     - mysql/mysql:database
     - rabbitmq/rabbitmq:queue
-    volumes:
-    - /app
     tty: true
     labels:
       io.rancher.container.pull_image: always
