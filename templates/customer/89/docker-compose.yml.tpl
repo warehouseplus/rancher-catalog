@@ -5,10 +5,10 @@ volumes:
     driver: rancher-nfs
 services:
   php:
-    image: 575062673063.dkr.ecr.eu-central-1.amazonaws.com/warehouseplus/api:1.15.9
+    image: 575062673063.dkr.ecr.eu-central-1.amazonaws.com/warehouseplus/api:1.16.0
     environment:
       SYMFONY_ENV: prod
-      SYMFONY__VERSION_TAG: 1.15.9
+      SYMFONY__VERSION_TAG: 1.16.0
       SYMFONY__DATABASE_HOST: database
       SYMFONY__DATABASE_NAME: customer_${account_identifier}
       SYMFONY__DATABASE_USER: customer_${account_identifier}
@@ -40,7 +40,7 @@ services:
     command: bin/console enqueue:consume --setup-broker -vvv
     environment:
       SYMFONY_ENV: prod
-      SYMFONY__VERSION_TAG: 1.15.9
+      SYMFONY__VERSION_TAG: 1.16.0
       SYMFONY__DATABASE_HOST: database
       SYMFONY__DATABASE_NAME: customer_${account_identifier}
       SYMFONY__DATABASE_USER: customer_${account_identifier}
