@@ -36,7 +36,7 @@ services:
       io.rancher.container.pull_image: always
 {{ .Values.api_labels | indent 6 }}
   consumer:
-    image: 575062673063.dkr.ecr.eu-central-1.amazonaws.com/warehouseplus/api:1.15.9
+    image: 575062673063.dkr.ecr.eu-central-1.amazonaws.com/warehouseplus/api:1.16.0
     command: bin/console enqueue:consume --setup-broker -vvv
     environment:
       SYMFONY_ENV: prod
