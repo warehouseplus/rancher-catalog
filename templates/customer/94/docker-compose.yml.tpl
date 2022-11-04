@@ -125,6 +125,6 @@ services:
       - xpack.security.enabled=false
       - discovery.type=single-node
       - TAKE_FILE_OWNERSHIP="true"
-      - ES_JAVA_OPTS: -Xms1g -Xmx4g
+      - ES_JAVA_OPTS: "-Xms1g -Xmx4g"
     volumes:
       - customer_${account_identifier}_elasticsearch_data:/usr/share/elasticsearch/data
