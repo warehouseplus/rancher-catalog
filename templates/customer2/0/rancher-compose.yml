@@ -1,0 +1,69 @@
+.catalog:
+  name: "Customer"
+  version: "0.0.1"
+  description: "Customer Stack with API and Portal"
+  uuid: customer-0.0.1
+  minimum_rancher_version: v0.56.0
+  questions:
+    - variable: account_identifier
+      description: "Identifier of the customer account"
+      label: "Account identifier"
+      type: "string"
+      required: true
+    - variable: database_password
+      description: "Password for the customer database"
+      label: "Database password"
+      type: "password"
+      required: true
+    - variable: mailer_access_key
+      description: "Access key of the mailer"
+      label: "Mailer access key"
+      type: "string"
+      required: true
+    - variable: mailer_secret_key
+      description: "Secret key for the mailer"
+      label: "Mailer secret key"
+      type: "password"
+      required: true
+    - variable: bucket_access_key
+      description: "Access key of the bucket"
+      label: "Bucket access key"
+      type: "string"
+      required: true
+    - variable: bucket_secret_key
+      description: "Secret key for the bucket"
+      label: "Bucket secret key"
+      type: "password"
+      required: true
+    - variable: base64_key
+      description: "App key (base64)"
+      label: "App key"
+      type: "password"
+      required: true
+    - variable: api_labels
+      label: "Labels for API (Optional)"
+      description: |
+        Specify multiple "labels" key/value pairs in the format "this.is.my.label: value".
+        E.g. for Ofelia cron jobs "ofelia.enabled: true".
+      required: false
+      type: "multiline"
+    - variable: additional_domains
+      label: "Additional domains (Optional)"
+      description: |
+        Specify additional domains in a comma separated format "example.com,example.org".
+        This is needed to include these domain into the certificate.
+        Don't forget to put them into the load balancer as well.
+      required: false
+      type: "string"
+php:
+  scale: 1
+  start_on_create: true
+api:
+  scale: 1
+  start_on_create: true
+portal:
+  scale: 1
+  start_on_create: true
+letsencrypt:
+  scale: 1
+  start_on_create: true
