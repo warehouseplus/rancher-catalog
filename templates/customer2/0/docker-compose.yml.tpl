@@ -1,12 +1,12 @@
 version: '2'
 services:
   php:
-    image: 575062673063.dkr.ecr.eu-central-1.amazonaws.com/warehouseplus/open-api:0.0.4
+    image: 575062673063.dkr.ecr.eu-central-1.amazonaws.com/warehouseplus/open-api:0.0.6
     environment:
       APP_NAME: ${account_identifier}
       APP_ENV: prod
       APP_KEY: "${base64_key}"
-      APP_VERSION_TAG: 0.0.4
+      APP_VERSION_TAG: 0.0.6
       APP_URL: https://api.${account_identifier}.warehouseplus.de
       DB_CONNECTION: mysql
       DB_HOST: database
@@ -30,8 +30,6 @@ services:
       AWS_USE_PATH_STYLE_ENDPOINT: false
       AWS_DIRECTORY: ${account_identifier}
     stdin_open: true
-    volumes:
-    - ${account_identifier}-document-root:/var/www/html
     external_links:
     - mysql/mysql:database
     tty: true
