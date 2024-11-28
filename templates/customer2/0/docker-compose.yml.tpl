@@ -1,12 +1,12 @@
 version: '2'
 services:
   php:
-    image: 575062673063.dkr.ecr.eu-central-1.amazonaws.com/warehouseplus/open-api:0.0.9
+    image: 575062673063.dkr.ecr.eu-central-1.amazonaws.com/warehouseplus/open-api:0.0.10
     environment:
       APP_NAME: ${account_identifier}
       APP_ENV: prod
       APP_KEY: "${base64_key}"
-      APP_VERSION_TAG: 0.0.9
+      APP_VERSION_TAG: 0.0.10
       APP_URL: https://api.${account_identifier}.warehouseplus.de
       DB_CONNECTION: mysql
       DB_HOST: database
