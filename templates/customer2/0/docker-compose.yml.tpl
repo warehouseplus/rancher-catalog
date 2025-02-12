@@ -29,7 +29,7 @@ services:
       AWS_BUCKET: warehouseplus
       AWS_USE_PATH_STYLE_ENDPOINT: false
       AWS_DIRECTORY: ${account_identifier}
-      SENTRY_DSN: https://85ba5c95609c4d3f9c327e2e834a5e51@monitor.warehouseplus.de/5
+      SENTRY_DSN: https://269b72c2e4708088fea87b284e2f2d4b@o4508797074866176.ingest.de.sentry.io/4508797091381328
     stdin_open: true
     external_links:
     - mysql/mysql:database
@@ -60,6 +60,7 @@ services:
       REACT_APP_API_CLIENT_ID: 1_15e7tdk08wao8gsw4g8ssoc04skc0o4c44gw04w4sk488888og
       REACT_APP_API_CLIENT_SECRET: 3yygqjselgg0s8ggok8ks0s4o8cg80oss4sskkc8sc0wksc04g
       REACT_APP_API_URL: https://api.${account_identifier}.warehouseplus.de/api/v1.0
+      REACT_APP_SENTRY_DSN: https://20f1f42e9f19938053a541d1878e69fc@o4508797074866176.ingest.de.sentry.io/4508797104947280
     stdin_open: true
     tty: true
     labels:
